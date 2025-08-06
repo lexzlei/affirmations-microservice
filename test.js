@@ -7,7 +7,7 @@ async function testMicroservice() {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
-        },
+        }
     });
     if (resp.ok) {
         const data = await resp.json();
