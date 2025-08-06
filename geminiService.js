@@ -7,7 +7,7 @@ const ai = new GoogleGenAI({});
 
 async function generateAffirmations() {
     try {
-        const prompt = `Generate two unique and creative positive affirmations. They should avoid repetition in structure or theme. Use different tones—one can be uplifting and energetic, while the other can be calm and reassuring. Make each one feel like it’s speaking to a different part of a person's journey (e.g., confidence, healing, self-worth, motivation, acceptance). Avoid clichés and make them feel personal.`
+        const prompt = `Generate two unique positive affirmations. They should avoid repetition in structure or theme. Use different tones—one can be uplifting and energetic, while the other can be calm and reassuring. Make each one feel like it’s speaking to a different part of a person's journey (e.g., confidence, healing, self-worth, motivation, acceptance). Avoid clichés and make them feel personal.`
         const response = await ai.models.generateContent({
             model: "gemini-2.5-flash",
             contents: prompt,
