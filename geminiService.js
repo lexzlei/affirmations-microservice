@@ -5,15 +5,9 @@ dotenv.config();
 // The client gets the API key from the environment variable `GEMINI_API_KEY`.
 const ai = new GoogleGenAI({});
 
-async function generateSafetyTips({ location, startDate, endDate, numberOfTravelers, timestamp }) {
+async function generateAffirmations() {
     try {
-        const prompt = `
-            Generate safety tips for ${location} (example: "Safety Tips for Malibu, CA: Beach Safety: Strong ocean currents and rip tides
-            are common… Local Customs: Respect private beach access…"). The trip starts on ${startDate} and ends on ${endDate}.
-            The number of travelers is ${numberOfTravelers}. The generatedAt timestamp is ${timestamp}.
-
-            for the tips please provide Safety precautions, Local customs and etiquette tips, Cultural do's and don'ts, Emergency information, Transportation safety advice, Health and medical considerations 
-        `
+        const prompt = `Generate two positive affirmations for a user.`
         const response = await ai.models.generateContent({
             model: "gemini-2.5-flash",
             contents: prompt,
@@ -22,12 +16,10 @@ async function generateSafetyTips({ location, startDate, endDate, numberOfTravel
                 responseSchema: {
                     type: Type.OBJECT,
                     properties: {
-                        tips: { type: Type.STRING },
-                        location: { type: Type.STRING },
-                        generatedAt: { type: Type.STRING },
-                        success: { type: Type.BOOLEAN }
+                        affirmation1: { type: Type.STRING },
+                        affirmation2: { type: Type.STRING },
                     },
-                    propertyOrdering: ["tips", "location", "generatedAt", "success"]
+                    propertyOrdering: ["affirmation1", "affirmation2"],
                 }
             }
         });
@@ -40,4 +32,4 @@ async function generateSafetyTips({ location, startDate, endDate, numberOfTravel
     }
 }
 
-export default generateSafetyTips;
+export default generateAffirmations;
