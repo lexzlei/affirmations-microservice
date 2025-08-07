@@ -23,12 +23,12 @@ async function generateAffirmations() {
                 }
             }
         });
-        console.log("Generated safety tips:", response.text);
+        console.log("Generated affirmations:", response.text);
         const parsed = JSON.parse(response.text);
         return parsed;
     } catch (error) {
-        console.error("Error generating safety tips:", error);
-        throw new Error("Failed to generate safety tips");
+        console.error("Error generating affirmations:", error);
+        throw new Error("Failed to generate affirmations");
     }
 }
 
